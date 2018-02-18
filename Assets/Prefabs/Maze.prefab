@@ -51,11 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b145ee782448a488c6064e4ab9e790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 20
-  sizeZ: 20
-  cellPrefab: {fileID: 114259620871768610, guid: 9cab1d4c89350e34da6ca55e97bff0b6,
-    type: 2}
-  generationStepDelay: 0.01
   size:
     x: 20
     z: 20
+  cellPrefab: {fileID: 114259620871768610, guid: 9cab1d4c89350e34da6ca55e97bff0b6,
+    type: 2}
+  generationStepDelay: 0.01

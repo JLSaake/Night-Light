@@ -32,13 +32,23 @@ public class Maze : MonoBehaviour {
     {
         WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
-        IntVector2 coordinates = RandomCoordinates;
+        List<MazeCell> activeCells = new List<MazeCell>();
+        DoFirstGenerationStep(activeCells);
+        while (activeCells.Count > 0)
+        {
+            yield return delay;
+            DoNextGenerationStep(activeCells);
+        }
+
+        /*
+          IntVector2 coordinates = RandomCoordinates;
         while (ContainsCoordinates(coordinates) && GetCell(coordinates) == null)
         {
             yield return delay;
             CreateCell(coordinates);
             coordinates += MazeDirections.RandomValue.ToIntVector2();
         }
+        */
         /*
         for (int x = 0; x < size.x; x++)
         {
@@ -65,7 +75,7 @@ public class Maze : MonoBehaviour {
                 (coordinate.z >= 0) && (coordinate.z < size.z);
     }
 
-    private void CreateCell (IntVector2 coordinates)
+    private MazeCell CreateCell (IntVector2 coordinates)
     {
         MazeCell newCell = Instantiate(cellPrefab) as MazeCell;
         cells[coordinates.x, coordinates.z] = newCell;
@@ -74,5 +84,26 @@ public class Maze : MonoBehaviour {
         newCell.transform.parent = transform;
         newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0f,
                                                         coordinates.z - size.z * 0.5f + 0.5f);
+        return newCell;
+    }
+
+    private void DoFirstGenerationStep (List<MazeCell> activeCells)
+    {
+        activeCells.Add(CreateCell(RandomCoordinates));
+    }
+
+    private void DoNextGenerationStep (List<MazeCell> activeCells)
+    {
+        int currentIndex = activeCells.Count - 1;
+        MazeCell currentCell = activeCells[currentIndex];
+        MazeDirection direction = MazeDirections.RandomValue;
+        IntVector2 coordinates = currentCell.coordinates + direction.ToIntVector2();
+        if (ContainsCoordinates(coordinates) && GetCell(coordinates) == null)
+        {
+            activeCells.Add(CreateCell(coordinates));
+        } else
+        {
+            activeCells.RemoveAt(currentIndex);
+        }
     }
 }
