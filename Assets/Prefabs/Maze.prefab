@@ -56,3 +56,6 @@ MonoBehaviour:
   cellPrefab: {fileID: 114259620871768610, guid: 9cab1d4c89350e34da6ca55e97bff0b6,
     type: 2}
   generationStepDelay: 0.01
+  size:
+    x: 20
+    z: 20

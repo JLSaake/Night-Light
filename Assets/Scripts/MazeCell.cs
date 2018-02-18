@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MazeCell : MonoBehaviour {
 
+    public IntVector2 coordinates;
+
 	// Use this for initialization
 	void Start () {
 		
