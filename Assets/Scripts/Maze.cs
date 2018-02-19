@@ -98,25 +98,28 @@ public class Maze : MonoBehaviour {
     {
         int currentIndex = activeCells.Count - 1;
         MazeCell currentCell = activeCells[currentIndex];
-        MazeDirection direction = MazeDirections.RandomValue;
+        if (currentCell.IsFullyInitialized)
+        {
+            activeCells.RemoveAt(currentIndex);
+            return;
+        }
+        MazeDirection direction = currentCell.RandomUninitializedDirection;
         IntVector2 coordinates = currentCell.coordinates + direction.ToIntVector2();
-        if (ContainsCoordinates(coordinates) && GetCell(coordinates) == null)
+        if (ContainsCoordinates(coordinates))
         {
             MazeCell neighbor = GetCell(coordinates);
             if (neighbor == null)
             {
                 neighbor = CreateCell(coordinates);
                 CreatePassage(currentCell, neighbor, direction);
-                activeCells.Add(CreateCell(coordinates));
+                activeCells.Add(neighbor);
             } else
             {
                 CreateWall(currentCell, neighbor, direction);
-                activeCells.RemoveAt(currentIndex);
             }
         } else
         {
             CreateWall(currentCell, null, direction);
-            activeCells.RemoveAt(currentIndex);
         }
     }
 

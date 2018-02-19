@@ -56,7 +56,7 @@ MonoBehaviour:
     z: 20
   cellPrefab: {fileID: 114259620871768610, guid: 9cab1d4c89350e34da6ca55e97bff0b6,
     type: 2}
-  generationStepDelay: 0.01
+  generationStepDelay: 0
   passagePrefab: {fileID: 114739148989778006, guid: 052b11e6ceb935e4cbdcff3691e921b5,
     type: 2}
   wallPrefab: {fileID: 114129796090178700, guid: c4a02173920dbf642a71ce415aa1df0d,
