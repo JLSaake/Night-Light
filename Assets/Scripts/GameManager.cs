@@ -17,11 +17,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // TODO: Replace key with button in pause menu
-		if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RestartGame();
-        }
+
 	}
 
     private void BeginGame()
