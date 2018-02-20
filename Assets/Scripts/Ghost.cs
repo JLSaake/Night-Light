@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ghost : MonoBehaviour {
 
     public static int ghostCount;
-    //TODO: write wrapper for this int (+, get, -, reset)
 
 	// Use this for initialization
 	void Start () {
@@ -25,4 +24,28 @@ public class Ghost : MonoBehaviour {
      * Turn and face player
      * 
      */
+
+    public static void GhostCountPlus(int add)
+    {
+        ghostCount += add;
+    }
+
+    public static void GhostCountMinus(int minus)
+    {
+        ghostCount -= minus;
+        if (ghostCount < 0)
+        {
+            GhostCountReset();
+        }
+    }
+
+    public static void GhostCountReset()
+    {
+        ghostCount = 0;
+    }
+
+    public static int GhostCountGet()
+    {
+        return ghostCount;
+    }
 }

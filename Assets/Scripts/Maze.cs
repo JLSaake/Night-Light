@@ -151,10 +151,10 @@ public class Maze : MonoBehaviour {
         passage.Initialize(cell, otherCell, direction);
         passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(otherCell, cell, direction.GetOpposite());
-        if (Random.value < ghostProbabiliy && Ghost.ghostCount < ghostMax)
+        if (Random.value < ghostProbabiliy && Ghost.GhostCountGet() < ghostMax)
         {
             CreateGhost(ghostPrefab1, cell);
-            Debug.Log("Ghosts: " + Ghost.ghostCount);
+            Debug.Log("Ghosts: " + Ghost.GhostCountGet());
         } else
         if (Random.value < campfireProbability && campfireCount < campfireMax)
         {
@@ -190,10 +190,10 @@ public class Maze : MonoBehaviour {
     private void CreateGhost(Ghost gPrefab, MazeCell cell)
     {
         Ghost ghost = Instantiate(gPrefab) as Ghost;
-        ghost.name = "Ghost" + Ghost.ghostCount;
+        ghost.name = "Ghost" + Ghost.GhostCountGet();
         ghost.transform.parent = cell.transform;
         ghost.transform.localPosition = new Vector3(0f, 0.2f, 0f);
-        Ghost.ghostCount++;
+        Ghost.GhostCountPlus(1); // Sends message that one ghost instantiated
     }
 
     private void CreateCampfire(MazeCell cell)
