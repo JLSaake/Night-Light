@@ -9,6 +9,14 @@ public class Maze : MonoBehaviour {
     public float generationStepDelay;
     public MazePassage passagePrefab;
     public MazeWall wallPrefab;
+    public Ghost ghostPrefab1;
+
+    [Range(0f, 1f)]
+    public float ghostProbabiliy;
+
+    public int ghostMax;
+
+    private int ghostCount;
 
 
     private MazeCell[,] cells;
@@ -32,6 +40,7 @@ public class Maze : MonoBehaviour {
 
     public IEnumerator Generate ()
     {
+        ghostCount = 0;
         WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
         List<MazeCell> activeCells = new List<MazeCell>();
@@ -129,6 +138,10 @@ public class Maze : MonoBehaviour {
         passage.Initialize(cell, otherCell, direction);
         passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(otherCell, cell, direction.GetOpposite());
+        if (Random.value < ghostProbabiliy && ghostCount < ghostMax)
+        {
+            CreateGhost(ghostPrefab1, cell);
+        }
     }
 
     private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction)
@@ -140,5 +153,14 @@ public class Maze : MonoBehaviour {
             wall = Instantiate(wallPrefab) as MazeWall;
             wall.Initialize(otherCell, cell, direction.GetOpposite());
         }
+    }
+
+    private void CreateGhost(Ghost gPrefab, MazeCell cell)
+    {
+        Ghost ghost = Instantiate(gPrefab) as Ghost;
+        ghost.name = "Ghost" + ghostCount;
+        ghost.transform.parent = cell.transform;
+        ghost.transform.localPosition = new Vector3(0f, 0.2f, 0f);
+        ghostCount++;
     }
 }

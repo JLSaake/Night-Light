@@ -61,3 +61,7 @@ MonoBehaviour:
     type: 2}
   wallPrefab: {fileID: 114129796090178700, guid: c4a02173920dbf642a71ce415aa1df0d,
     type: 2}
+  ghostPrefab1: {fileID: 114069215192382192, guid: 16d373c6147243a48bc8b2b0b5ec26c4,
+    type: 2}
+  ghostProbabiliy: 0.05
+  ghostMax: 20
