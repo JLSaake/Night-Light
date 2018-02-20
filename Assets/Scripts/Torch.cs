@@ -51,5 +51,4 @@ public class Torch : MonoBehaviour {
         isActive = true;
         Debug.Log("TorchActive");
     }
-
 }

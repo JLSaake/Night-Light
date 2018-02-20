@@ -5,11 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public Maze mazePrefab;
-    public GameObject playerPrefab;
+    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerPrefab;
     public PlayerProjectile projectilePrefab;
 
 
-    private GameObject playerInstance;
+    private UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerInstance;
     private Maze mazeInstance;
 
     // TODO: Projectile pooling (20 max?)
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
     {
         mazeInstance = Instantiate(mazePrefab) as Maze;
         yield return StartCoroutine(mazeInstance.Generate());
-        playerInstance = Instantiate(playerPrefab) as GameObject;
+        playerInstance = Instantiate(playerPrefab) as UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
     }
 
     private void RestartGame()

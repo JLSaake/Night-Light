@@ -19,7 +19,7 @@ public class PlayerProjectile : MonoBehaviour {
 		
 	}
 
-    public void FireProjectile(GameObject player)
+    public void FireProjectile(UnityStandardAssets.Characters.FirstPerson.FirstPersonController player)
     {
         gameObject.transform.position = player.transform.position;
         gameObject.transform.position = new Vector3(gameObject.transform.position.x + player.transform.forward.x * offset,
