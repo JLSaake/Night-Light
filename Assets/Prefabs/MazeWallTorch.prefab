@@ -38,9 +38,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4097734980710082}
   - component: {fileID: 33962466954491536}
-  - component: {fileID: 135029168202977662}
   - component: {fileID: 23898454634094014}
   - component: {fileID: 114625209169128748}
+  - component: {fileID: 65734022927526862}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -199,6 +199,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65734022927526862
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271328750367114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5, y: 4.5, z: 4.5}
+  m_Center: {x: 0, y: -1.25, z: -1.8}
 --- !u!114 &114625209169128748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c15a4e5439c82429cd19ea9b4729fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 5
 --- !u!114 &114724623099335000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,15 +237,3 @@ MonoBehaviour:
   cell: {fileID: 0}
   otherCell: {fileID: 0}
   direction: 0
---- !u!135 &135029168202977662
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1271328750367114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

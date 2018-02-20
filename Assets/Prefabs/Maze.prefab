@@ -71,5 +71,5 @@ MonoBehaviour:
   torchProbability: 0.15
   campfireProbability: 0.008
   ghostMax: 20
-  torchMax: 50
+  torchMax: 200
   campfireMax: 1
