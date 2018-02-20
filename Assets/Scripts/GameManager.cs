@@ -6,11 +6,16 @@ public class GameManager : MonoBehaviour {
 
     public Maze mazePrefab;
     public GameObject playerPrefab;
+    public PlayerProjectile projectilePrefab;
+
+    public float xOffset;
+    public float yOffset;
+    //TODO: MOVE TO PLAYERPROJECTILE
 
     private GameObject playerInstance;
     private Maze mazeInstance;
 
-
+    // TODO: Projectile pulling (20 max?)
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +24,24 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (Input.GetButtonDown("Fire2") && playerInstance != null)
+        {
+            PlayerProjectile projectile = Instantiate(projectilePrefab) as PlayerProjectile;
+            fire(projectile);
+            
+        }
 	}
+
+    private void fire(PlayerProjectile projectile)
+    {
+        //TODO: MOVE TO PLAYERPROJECTILE
+        projectile.transform.position = playerInstance.transform.position;
+        projectile.transform.position = new Vector3(projectile.transform.position.x + playerInstance.transform.forward.x * xOffset,
+                                                    projectile.transform.position.y + yOffset,
+                                                    projectile.transform.position.z + playerInstance.transform.forward.z * xOffset);
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        rb.velocity = playerInstance.transform.forward * 3;
+    }
 
     private IEnumerator BeginGame()
     {

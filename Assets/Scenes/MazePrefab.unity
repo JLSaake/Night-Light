@@ -143,6 +143,10 @@ MonoBehaviour:
   mazePrefab: {fileID: 114873964890048792, guid: 266bd5b7512b7104795bd29d46354691,
     type: 2}
   playerPrefab: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+  projectilePrefab: {fileID: 114699139041832594, guid: 164ca995186050f40a24a9977c7a59df,
+    type: 2}
+  xOffset: 0.3
+  yOffset: -0
 --- !u!4 &447511173
 Transform:
   m_ObjectHideFlags: 0
