@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public Maze mazePrefab;
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerPrefab;
     public PlayerProjectile projectilePrefab;
+    public Timer timer;
 
     public float fastWalk;
     public float slowWalk;
