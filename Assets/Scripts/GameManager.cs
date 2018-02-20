@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     public PlayerProjectile projectilePrefab;
 
 
+
+
     private UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerInstance;
     private Maze mazeInstance;
 
@@ -21,12 +23,13 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Fire2") && playerInstance != null)
+        if ((Input.GetButtonDown("Fire2")) && (playerInstance != null) && (Scoring.GetLight() > 0))
         {
             PlayerProjectile projectile = Instantiate(projectilePrefab) as PlayerProjectile;
             projectile.FireProjectile(playerInstance);
             
         }
+
 	}
 
     private IEnumerator BeginGame()

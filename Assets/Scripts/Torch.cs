@@ -8,11 +8,13 @@ public class Torch : MonoBehaviour {
 
     private bool canTake;
     private bool isActive;
+    private bool playerIn;
 
 	// Use this for initialization
 	void Start () {
         canTake = false;
         isActive = true;
+        playerIn = false;
 	}
 	
 	// Update is called once per frame
@@ -28,6 +30,7 @@ public class Torch : MonoBehaviour {
         if (collider.gameObject.tag == "Player" && isActive)
         {
             canTake = true;
+            playerIn = true;
             Debug.Log("CanTake");
         }
     }
@@ -37,6 +40,7 @@ public class Torch : MonoBehaviour {
         if (collider.gameObject.tag == "Player")
         {
             canTake = false;
+            playerIn = false;
             Debug.Log("CanNolongerTake");
         }
     }
@@ -44,11 +48,16 @@ public class Torch : MonoBehaviour {
     private IEnumerator TakeTorch()
     {
         Debug.Log("TakingTorch");
-        //TODO: add light to player
+        Scoring.AddLight(1); // TODO: make constant
+        Debug.Log("Taking: " + Scoring.GetLight() + " light remaining");
         isActive = false;
         canTake = false;
         yield return new WaitForSeconds(cooldown);
         isActive = true;
+        if (playerIn)
+        {
+            canTake = true;
+        }
         Debug.Log("TorchActive");
     }
 }

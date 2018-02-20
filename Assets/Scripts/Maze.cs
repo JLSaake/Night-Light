@@ -13,6 +13,10 @@ public class Maze : MonoBehaviour {
     public Ghost ghostPrefab1;
     public Campfire campfirePrefab;
 
+
+    public int startLight;
+    public int maxLight;
+
     [Range(0f, 1f)]
     public float ghostProbabiliy;
 
@@ -54,6 +58,11 @@ public class Maze : MonoBehaviour {
         Ghost.ghostCount = 0;
         torchCount = 0;
         campfireCount = 0;
+        Scoring.SetLightMax(maxLight);
+        Scoring.SetLight(startLight);
+
+        Debug.Log("Starting with " + Scoring.GetLight() + " light");
+
         WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
         List<MazeCell> activeCells = new List<MazeCell>();

@@ -7,11 +7,9 @@ public class PlayerProjectile : MonoBehaviour {
 
     public float offset;
 
-    private Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
-        rb = gameObject.GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -25,8 +23,9 @@ public class PlayerProjectile : MonoBehaviour {
         gameObject.transform.position = new Vector3(gameObject.transform.position.x + player.transform.forward.x * offset,
                                                     gameObject.transform.position.y,
                                                     gameObject.transform.position.z + player.transform.forward.z * offset);
-        //rb.velocity = player.transform.forward * 3;
         gameObject.GetComponent<Rigidbody>().velocity = player.transform.forward * 3;
+        Scoring.MinusLight(1); // TODO: Set as variable
+        Debug.Log("Firing: " + Scoring.GetLight() + " light remaining");
     }
 
     public void OnCollisionEnter(Collision collider)
