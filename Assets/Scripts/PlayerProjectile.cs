@@ -29,5 +29,10 @@ public class PlayerProjectile : MonoBehaviour {
         gameObject.GetComponent<Rigidbody>().velocity = player.transform.forward * 3;
     }
 
+    public void OnCollisionEnter(Collision collider)
+    {
+        Destroy(this.gameObject);
+    }
+
     
 }
