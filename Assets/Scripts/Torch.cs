@@ -19,7 +19,7 @@ public class Torch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown("Fire1") && canTake && isActive)
+		if (Input.GetButtonDown("Fire1") && canTake && playerIn)
         {
             StartCoroutine(TakeTorch());
         }
@@ -27,9 +27,12 @@ public class Torch : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Player" && isActive)
+        if (collider.gameObject.tag == "Player")
         {
-            canTake = true;
+            if (isActive)
+            {
+                canTake = true;
+            }
             playerIn = true;
             Debug.Log("CanTake");
         }

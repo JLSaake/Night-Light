@@ -6,15 +6,38 @@ public class Ghost : MonoBehaviour {
 
     public static int ghostCount;
 
+    public int health;
+    public float cooldown;
+    public int lightDrain;
+
+    private bool onCooldown;
+
 	// Use this for initialization
 	void Start () {
-		
+        onCooldown = false;	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    void OnTriggerStay(Collider collider)
+    {
+        if (collider.gameObject.tag == "Player" && !onCooldown)
+        {
+            StartCoroutine(DrainLight(lightDrain));
+        } else
+        if (collider.gameObject.tag == "Projectile")
+        {
+            PlayerProjectile projectile = collider.gameObject.GetComponent<PlayerProjectile>();
+            if (projectile != null)
+            {
+                DealDamage(projectile.damage);
+                Destroy(projectile.gameObject);
+            }
+        }
+    }
 
     /* TODO:
      * --------
@@ -24,6 +47,26 @@ public class Ghost : MonoBehaviour {
      * Turn and face player
      * 
      */
+
+    
+    private IEnumerator DrainLight(int light)
+    {
+        onCooldown = true;
+        Scoring.MinusLight(light);
+        Debug.Log("Attacking player! " + Scoring.GetLight() + " light remaining");
+        yield return new WaitForSeconds(cooldown);
+        onCooldown = false;
+    }
+
+    private void DealDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 
     public static void GhostCountPlus(int add)
     {

@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54410430343427350}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 0.3
+  damage: 1
 --- !u!136 &136658360494504694
 CapsuleCollider:
   m_ObjectHideFlags: 1

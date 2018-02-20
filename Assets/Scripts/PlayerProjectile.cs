@@ -6,6 +6,7 @@ public class PlayerProjectile : MonoBehaviour {
 
 
     public float offset;
+    public int damage;
 
 
 	// Use this for initialization
