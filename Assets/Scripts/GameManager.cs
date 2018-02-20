@@ -8,17 +8,19 @@ public class GameManager : MonoBehaviour {
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerPrefab;
     public PlayerProjectile projectilePrefab;
 
+    public float fastWalk;
+    public float slowWalk;
 
-
+    private int prevLight;
 
     private UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerInstance;
     private Maze mazeInstance;
 
-    // TODO: Projectile pooling (20 max?)
 
 	// Use this for initialization
 	void Start () {
         StartCoroutine(BeginGame());
+        prevLight = Scoring.GetLight();
 	}
 	
 	// Update is called once per frame
@@ -29,7 +31,18 @@ public class GameManager : MonoBehaviour {
             projectile.FireProjectile(playerInstance);
             
         }
-
+        if (prevLight != Scoring.GetLight())
+        {
+            prevLight = Scoring.GetLight();
+            if (Scoring.GetLight() <= 0)
+            {
+                playerInstance.setWalkSpeed(slowWalk);
+            }
+            else
+            {
+                playerInstance.setWalkSpeed(fastWalk);
+            }
+        }
 	}
 
     private IEnumerator BeginGame()

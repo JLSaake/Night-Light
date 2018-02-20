@@ -83,6 +83,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
 
+        public void setWalkSpeed(float speed)
+        {
+            m_WalkSpeed = speed;
+            m_RunSpeed = speed;
+        }
+
 
         private void PlayLandingSound()
         {
