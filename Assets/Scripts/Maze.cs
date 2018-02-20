@@ -9,8 +9,8 @@ public class Maze : MonoBehaviour {
     public float generationStepDelay;
     public MazePassage passagePrefab;
     public MazeWall wallPrefab;
+    public MazeWall torchWallPrefab;
     public Ghost ghostPrefab1;
-    public Torch torchPrefab;
     public Campfire campfirePrefab;
 
     [Range(0f, 1f)]
@@ -52,6 +52,8 @@ public class Maze : MonoBehaviour {
     public IEnumerator Generate ()
     {
         Ghost.ghostCount = 0;
+        torchCount = 0;
+        campfireCount = 0;
         WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
         List<MazeCell> activeCells = new List<MazeCell>();
@@ -163,7 +165,20 @@ public class Maze : MonoBehaviour {
 
     private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
-        MazeWall wall = Instantiate(wallPrefab) as MazeWall;
+        MazeWall wall;
+        if (Random.value < torchProbability && torchCount < torchMax)
+        {
+            wall = Instantiate(torchWallPrefab) as MazeWall;
+            Debug.Log("Torch: " + torchCount);
+            torchCount++;
+        } else
+        {
+            wall = Instantiate(wallPrefab) as MazeWall;
+        }
+        if (wall == null)
+        {
+            Debug.LogError("Wall unable to be instantiated. Check prefabs.");
+        }
         wall.Initialize(cell, otherCell, direction);
         if (otherCell != null)
         {

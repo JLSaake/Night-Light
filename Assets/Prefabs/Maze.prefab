@@ -61,9 +61,9 @@ MonoBehaviour:
     type: 2}
   wallPrefab: {fileID: 114129796090178700, guid: c4a02173920dbf642a71ce415aa1df0d,
     type: 2}
-  ghostPrefab1: {fileID: 114069215192382192, guid: 16d373c6147243a48bc8b2b0b5ec26c4,
+  torchWallPrefab: {fileID: 114724623099335000, guid: e734bdec60e16b548b93813b3052b855,
     type: 2}
-  torchPrefab: {fileID: 114674375199890996, guid: 293fdb6adfcff084d8b57ebd2598e8ec,
+  ghostPrefab1: {fileID: 114069215192382192, guid: 16d373c6147243a48bc8b2b0b5ec26c4,
     type: 2}
   campfirePrefab: {fileID: 114217721153958790, guid: 78f2ed3d7c627994e89a74d8a020c9b8,
     type: 2}
