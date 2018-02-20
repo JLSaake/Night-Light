@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour {
 
+    public static int ghostCount;
+    //TODO: write wrapper for this int (+, get, -, reset)
+
 	// Use this for initialization
 	void Start () {
 		

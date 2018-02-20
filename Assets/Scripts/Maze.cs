@@ -10,13 +10,24 @@ public class Maze : MonoBehaviour {
     public MazePassage passagePrefab;
     public MazeWall wallPrefab;
     public Ghost ghostPrefab1;
+    public Torch torchPrefab;
+    public Campfire campfirePrefab;
 
     [Range(0f, 1f)]
     public float ghostProbabiliy;
 
-    public int ghostMax;
+    [Range(0f, 1f)]
+    public float torchProbability;
 
-    private int ghostCount;
+    [Range(0f, 1f)]
+    public float campfireProbability;
+
+    public int ghostMax;
+    public int torchMax;
+    public int campfireMax;
+
+    private int torchCount;
+    private int campfireCount;
 
 
     private MazeCell[,] cells;
@@ -40,7 +51,7 @@ public class Maze : MonoBehaviour {
 
     public IEnumerator Generate ()
     {
-        ghostCount = 0;
+        Ghost.ghostCount = 0;
         WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
         List<MazeCell> activeCells = new List<MazeCell>();
@@ -138,9 +149,15 @@ public class Maze : MonoBehaviour {
         passage.Initialize(cell, otherCell, direction);
         passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(otherCell, cell, direction.GetOpposite());
-        if (Random.value < ghostProbabiliy && ghostCount < ghostMax)
+        if (Random.value < ghostProbabiliy && Ghost.ghostCount < ghostMax)
         {
             CreateGhost(ghostPrefab1, cell);
+            Debug.Log("Ghosts: " + Ghost.ghostCount);
+        } else
+        if (Random.value < campfireProbability && campfireCount < campfireMax)
+        {
+            CreateCampfire(cell);
+            Debug.Log("Campfire" + campfireCount + " at " + cell.coordinates.x + ", " + cell.coordinates.z);
         }
     }
 
@@ -158,9 +175,18 @@ public class Maze : MonoBehaviour {
     private void CreateGhost(Ghost gPrefab, MazeCell cell)
     {
         Ghost ghost = Instantiate(gPrefab) as Ghost;
-        ghost.name = "Ghost" + ghostCount;
+        ghost.name = "Ghost" + Ghost.ghostCount;
         ghost.transform.parent = cell.transform;
         ghost.transform.localPosition = new Vector3(0f, 0.2f, 0f);
-        ghostCount++;
+        Ghost.ghostCount++;
+    }
+
+    private void CreateCampfire(MazeCell cell)
+    {
+        Campfire campfire = Instantiate(campfirePrefab) as Campfire;
+        campfire.name = "Campfire" + campfireCount;
+        campfire.transform.parent = cell.transform;
+        campfire.transform.localPosition = new Vector3(0f, 0.2f, 0f);
+        campfireCount++;
     }
 }
