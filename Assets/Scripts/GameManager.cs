@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public LevelManager levelManager;
+    public UIManager uiManager;
     public Maze mazePrefab;
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerPrefab;
     public PlayerProjectile projectilePrefab;
@@ -76,6 +77,8 @@ public class GameManager : MonoBehaviour {
                 timer.PauseTime();
                 levelManager.LoadLevel("06Win");
             }
+
+            uiManager.UpdateNumbers(Scoring.GetLight(), (maxTime - timer.GetElapsedTime()), Ghost.GhostCountGet());
         }
 
         if (timer.GetElapsedTime() > maxTime && !outOfTime)

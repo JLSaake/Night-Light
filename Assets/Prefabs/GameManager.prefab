@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 114874972129310826, guid: 27d7c34e88b0d594a851524091c5509e,
     type: 2}
+  uiManager: {fileID: 0}
   mazePrefab: {fileID: 114873964890048792, guid: 266bd5b7512b7104795bd29d46354691,
     type: 2}
   playerPrefab: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
