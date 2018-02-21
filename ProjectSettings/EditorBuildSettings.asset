@@ -17,3 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/03ModeMenu.unity
     guid: 5cd39113c1471954badc0faf1c49aae5
+  - enabled: 1
+    path: Assets/Scenes/04Maze.unity
+    guid: 5ae3b1406e4513744aec9ecd8b0ffb9c
+  - enabled: 1
+    path: Assets/Scenes/05Lose.unity
+    guid: 795163398827cd546ab90d2cb547e77c
+  - enabled: 1
+    path: Assets/Scenes/06Win.unity
+    guid: e7b2b6eb4e09e7249a2a41561fd7322a
