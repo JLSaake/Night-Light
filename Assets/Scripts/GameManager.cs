@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+    public LevelManager levelManager;
     public Maze mazePrefab;
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerPrefab;
     public PlayerProjectile projectilePrefab;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        gameActive = false;
         StartCoroutine(BeginGame());
         prevLight = Scoring.GetLight();
 	}
@@ -50,15 +52,15 @@ public class GameManager : MonoBehaviour {
 
         if (gameActive)
         {
-            //Debug.Log("Time Remaining: " + Mathf.Round(maxTime - timer.GetElapsedTime()) + " seconds");
-            //Debug.Log("Ghosts Remaining: " + Ghost.GhostCountGet());
+            Debug.Log("Time Remaining: " + Mathf.Round(maxTime - timer.GetElapsedTime()) + " seconds");
+            Debug.Log("Ghosts Remaining: " + Ghost.GhostCountGet());
             //TODO: UI updating (light, time, and ghosts remaining goes here)
 
             if (Ghost.GhostCountGet() <=0)
             {
                 Debug.Log("You Win!");
                 timer.PauseTime();
-                // Sethigh score (time shortest elapsed time)
+                levelManager.LoadLevel("06Win");
             }
         }
 
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour {
             outOfTime = true;
             gameActive = false;
             Debug.Log("GameOver");
-            //Invoke("RestartGame", 10); // TEMPORARY
+            levelManager.LoadLevel("05Lose");
         }
 	}
 

@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         timeElapsed = 0;
+        startTime = 0;
         timeOn = false;
 	}
 	
@@ -27,17 +28,20 @@ public class Timer : MonoBehaviour {
     {
         startTime = Time.timeSinceLevelLoad;
         timeOn = true;
+        Debug.Log("Starting");
     }
 
     public void PauseTime()
     {
         timeOn = false;
+        Debug.Log("Pausing");
     }
 
     public void ResumeTime()
     {
         startTime = Time.timeSinceLevelLoad - timeElapsed;
         timeOn = true;
+        Debug.Log("Resuming");
     }
 
     public float GetElapsedTime()
