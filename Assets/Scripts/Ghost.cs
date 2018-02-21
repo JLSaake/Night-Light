@@ -35,6 +35,7 @@ public class Ghost : MonoBehaviour {
             {
                 DealDamage(projectile.damage);
                 Destroy(projectile.gameObject);
+                Ghost.GhostCountMinus(1);
             }
         }
     }

@@ -146,6 +146,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 114699139041832594, guid: 164ca995186050f40a24a9977c7a59df,
     type: 2}
   timer: {fileID: 649464054}
+  maxTime: 300
   fastWalk: 2
   slowWalk: 0.75
 --- !u!4 &447511173

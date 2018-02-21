@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerPrefab;
     public PlayerProjectile projectilePrefab;
     public Timer timer;
+    public float maxTime; // In seconds
 
     public float fastWalk;
     public float slowWalk;
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour {
 
     private UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerInstance;
     private Maze mazeInstance;
+    private bool outOfTime;
+    private bool gameActive;
 
 
 	// Use this for initialization
@@ -44,13 +47,39 @@ public class GameManager : MonoBehaviour {
                 playerInstance.setWalkSpeed(fastWalk);
             }
         }
+
+        if (gameActive)
+        {
+            //Debug.Log("Time Remaining: " + Mathf.Round(maxTime - timer.GetElapsedTime()) + " seconds");
+            //Debug.Log("Ghosts Remaining: " + Ghost.GhostCountGet());
+            //TODO: UI updating (light, time, and ghosts remaining goes here)
+
+            if (Ghost.GhostCountGet() <=0)
+            {
+                Debug.Log("You Win!");
+                timer.PauseTime();
+                // Sethigh score (time shortest elapsed time)
+            }
+        }
+
+        if (timer.GetElapsedTime() > maxTime && !outOfTime)
+        {
+            outOfTime = true;
+            gameActive = false;
+            Debug.Log("GameOver");
+            //Invoke("RestartGame", 10); // TEMPORARY
+        }
 	}
 
     private IEnumerator BeginGame()
     {
+        outOfTime = false;
+        gameActive = false;
         mazeInstance = Instantiate(mazePrefab) as Maze;
         yield return StartCoroutine(mazeInstance.Generate());
         playerInstance = Instantiate(playerPrefab) as UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
+        timer.StartTime();
+        gameActive = true;
     }
 
     private void RestartGame()
