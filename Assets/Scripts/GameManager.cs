@@ -73,9 +73,11 @@ public class GameManager : MonoBehaviour {
 
             if (Ghost.GhostCountGet() <=0)
             {
+                playerInstance.setMove(false);
                 Debug.Log("You Win!");
                 gameActive = false;
                 timer.PauseTime();
+                playerInstance.FreeCursor();
                 levelManager.LoadLevel("06Win");
             }
 
@@ -84,9 +86,11 @@ public class GameManager : MonoBehaviour {
 
         if (timer.GetElapsedTime() > maxTime && !outOfTime)
         {
+            playerInstance.setMove(false);
             outOfTime = true;
             gameActive = false;
             Debug.Log("GameOver");
+            playerInstance.FreeCursor();
             levelManager.LoadLevel("05Lose");
         }
 
@@ -96,13 +100,19 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator BeginGame()
     {
+        startingCamera.gameObject.SetActive(true);
+        uiManager.LoadingGameUI();
         outOfTime = false;
         gameActive = false;
         gamePaused = false;
         mazeInstance = Instantiate(mazePrefab) as Maze;
         yield return StartCoroutine(mazeInstance.Generate());
+
+        // TODO: wait for button to be pressed to start gameplay after maze loading
+
         startingCamera.gameObject.SetActive(false);
         playerInstance = Instantiate(playerPrefab) as UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
+        uiManager.ChangeToGameUI();
         timer.StartTime();
         gameActive = true;
     }

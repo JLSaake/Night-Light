@@ -26,5 +26,19 @@ public class UIManager : MonoBehaviour {
         ghostsNumber.text = ghosts.ToString();
     }
 
+    public void ChangeToGameUI()
+    {
+        lightNumber.gameObject.SetActive(true);
+        secondsNumber.gameObject.SetActive(true);
+        ghostsNumber.gameObject.SetActive(true);
+    }
+
+    public void LoadingGameUI()
+    {
+        lightNumber.gameObject.SetActive(false);
+        secondsNumber.gameObject.SetActive(false);
+        ghostsNumber.gameObject.SetActive(false);
+    }
+
 
 }

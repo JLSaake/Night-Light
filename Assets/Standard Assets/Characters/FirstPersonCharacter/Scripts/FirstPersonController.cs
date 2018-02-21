@@ -65,12 +65,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             canMove = move;
         }
 
+        public void FreeCursor()
+        {
+            m_MouseLook.SetCursorLock(false);
+        }
 
         // Update is called once per frame
         private void Update()
         {
             if (canMove)
             {
+                if (m_MouseLook.lockCursor == false)
+                {
+                    m_MouseLook.SetCursorLock(true);
+                }
                 RotateView();
                 // the jump state needs to read here to make sure it is not missed
                 if (!m_Jump)
@@ -150,6 +158,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 UpdateCameraPosition(speed);
 
                 m_MouseLook.UpdateCursorLock();
+            } else
+            {
+                m_MouseLook.SetCursorLock(false);
             }
         }
 
