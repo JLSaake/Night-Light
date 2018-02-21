@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public PlayerProjectile projectilePrefab;
     public Timer timer;
     public float maxTime; // In seconds
+    public Camera startingCamera;
 
     public float fastWalk;
     public float slowWalk;
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour {
         gamePaused = false;
         mazeInstance = Instantiate(mazePrefab) as Maze;
         yield return StartCoroutine(mazeInstance.Generate());
+        startingCamera.gameObject.SetActive(false);
         playerInstance = Instantiate(playerPrefab) as UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
         timer.StartTime();
         gameActive = true;
