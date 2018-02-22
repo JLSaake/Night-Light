@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
+    private bool inPauseMain;
     public GameObject controlsPrefab;
 
     public GameObject inGameUI;
@@ -17,9 +18,12 @@ public class UIManager : MonoBehaviour {
 
     public GameObject pauseUI;
     public Image backdropPanel;
+    public Button controlsPauseButton;
 
 	// Use this for initialization
 	void Awake () {
+        inPauseMain = false;
+        controlsPauseButton.gameObject.SetActive(false);
         pauseUI.gameObject.SetActive(false);
         preGameUI.gameObject.SetActive(false);
         inGameUI.gameObject.SetActive(false);
@@ -79,12 +83,14 @@ public class UIManager : MonoBehaviour {
 
     public void PauseUIOn()
     {
+        inPauseMain = true;
         backdropPanel.gameObject.SetActive(true);
         pauseUI.gameObject.SetActive(true);
     }
 
     public void PauseUIOff()
     {
+        inPauseMain = false;
         backdropPanel.gameObject.SetActive(false);
         pauseUI.gameObject.SetActive(false);
     }
@@ -93,13 +99,22 @@ public class UIManager : MonoBehaviour {
     {
         pauseUI.gameObject.SetActive(false);
         controlsPrefab.gameObject.SetActive(true);
+        controlsPauseButton.gameObject.SetActive(true);
+        inPauseMain = false;
         // Add return button on
     }
 
     public void PauseFromControls()
     {
         pauseUI.gameObject.SetActive(true);
-        controlsPrefab.gameObject.SetActive(false);        
+        controlsPrefab.gameObject.SetActive(false);
+        controlsPauseButton.gameObject.SetActive(false);
+        inPauseMain = true;        
+    }
+
+    public bool InPauseMain()
+    {
+        return inPauseMain;
     }
 
     // TODO: RESTART & QUIT (with respective confirmation panels)

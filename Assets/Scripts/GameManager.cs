@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetButtonDown("Pause") && gamePaused)
+        if (Input.GetButtonDown("Pause") && gamePaused && uiManager.InPauseMain())
         {
             UnpauseGame();
         } else
