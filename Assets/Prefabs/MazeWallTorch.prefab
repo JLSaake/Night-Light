@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c15a4e5439c82429cd19ea9b4729fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 30
+  cooldown: 20
   particles: {fileID: 198052327901066686}
   light1: {fileID: 108716958136098914}
   light2: {fileID: 108745532201780292}

@@ -14,20 +14,22 @@ public class Ghost : MonoBehaviour {
 
     private bool onCooldown;
     private GameManager gameManager;
-    private Camera playerMapCamera;
     private Quaternion startRotation;
     private Transform playerTransform;
+    private Animator animator;
+    private bool isDead;
 
 	// Use this for initialization
 	void Start () {
         onCooldown = false;
+        isDead = false;
         startRotation = this.gameObject.transform.rotation;
+        animator = this.gameObject.GetComponent<Animator>();
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager == null)
         {
             Debug.LogError("No GameManager found");
         }
-        playerMapCamera = gameManager.overheadCamera;
 	}
 	
 	// Update is called once per frame
@@ -44,8 +46,9 @@ public class Ghost : MonoBehaviour {
 
     void OnTriggerStay(Collider collider)
     {
-        if (collider.gameObject.tag == "Player" && !onCooldown)
+        if (collider.gameObject.tag == "Player" && !onCooldown && !isDead)
         {
+            animator.Play("BiteAttack");
             if (colorGhost == GhostType.RED)
             {
                 gameManager.Blind(cooldown);
@@ -88,10 +91,19 @@ public class Ghost : MonoBehaviour {
         health -= damage;
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+            isDead = true;
+            animator.Play("Die");
+            Invoke("Die", 1.5f);
+        } else
+        {
+            animator.Play("TakeDamage");
         }
     }
 
+    private void Die()
+    {
+        Destroy(this.gameObject);
+    }
 
 
     public static void GhostCountPlus(int add)

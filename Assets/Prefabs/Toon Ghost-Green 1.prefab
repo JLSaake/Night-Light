@@ -4021,6 +4021,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorGhost: 2
-  health: 1
+  health: 5
   cooldown: 5
   lightDrain: 3

@@ -22,6 +22,10 @@ public class UIManager : MonoBehaviour {
     public Button controlsPauseButton;
 
     public Image blindPanel;
+    public Image minimapDarkPanel;
+    public Image playerDarkPanel;
+
+    private bool gameUIOn;
 
 	// Use this for initialization
 	void Awake () {
@@ -30,7 +34,20 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if (Scoring.GetLight() <= 10)
+        {
+            minimapDarkPanel.color = new Color(minimapDarkPanel.color.r,
+                                               minimapDarkPanel.color.g,
+                                               minimapDarkPanel.color.b,
+                                               ((1 - ((float)Scoring.GetLight() / 10)) *2));
+        }
+        if (Scoring.GetLight() <= 5)
+        {
+            playerDarkPanel.color = new Color(playerDarkPanel.color.r,
+                                               playerDarkPanel.color.g,
+                                               playerDarkPanel.color.b,
+                                               (.7f - (float)Scoring.GetLight() / 5));
+        }
 	}
 
     public void UpdateNumbers(int light, float seconds, int ghosts)
@@ -138,4 +155,5 @@ public class UIManager : MonoBehaviour {
         yield return new WaitForSeconds(seconds);
         blindPanel.gameObject.SetActive(false);
     }
+
 }

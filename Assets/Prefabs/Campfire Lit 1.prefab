@@ -11251,8 +11251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b611ec07e01a47e44883500e626dbd80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 8
-  lightGive: 2
+  cooldown: 5
+  lightGive: 3
   light1: {fileID: 10811980}
   light2: {fileID: 10833544}
   light3: {fileID: 10800546}

@@ -162,7 +162,7 @@ public class Maze : MonoBehaviour {
         passage.Initialize(cell, otherCell, direction);
         passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(otherCell, cell, direction.GetOpposite());
-        if (Random.value < ghostProbabiliy && Ghost.GhostCountGet() < ghostMax)
+        if (Random.value < ghostProbabiliy && Ghost.GhostCountGet() < ghostMax && !(cell.transform.position.x == 0 && cell.transform.position.z == 0))
         {
             float temp = Random.Range(0, 3);
             if (temp >= 0 && temp < 1)
