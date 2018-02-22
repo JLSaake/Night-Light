@@ -24,7 +24,7 @@ public class PlayerProjectile : MonoBehaviour {
         gameObject.transform.position = new Vector3(gameObject.transform.position.x + player.transform.forward.x * offset,
                                                     gameObject.transform.position.y,
                                                     gameObject.transform.position.z + player.transform.forward.z * offset);
-        gameObject.GetComponent<Rigidbody>().velocity = player.transform.forward * 3;
+        gameObject.GetComponent<Rigidbody>().velocity = player.transform.forward * 4;
         Scoring.MinusLight(1); // TODO: Set as variable
         Debug.Log("Firing: " + Scoring.GetLight() + " light remaining");
     }

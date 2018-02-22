@@ -162,7 +162,7 @@ public class Maze : MonoBehaviour {
         passage.Initialize(cell, otherCell, direction);
         passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(otherCell, cell, direction.GetOpposite());
-        if (Random.value < ghostProbabiliy && Ghost.GhostCountGet() < ghostMax && !(cell.transform.position.x == 0 && cell.transform.position.z == 0))
+        if (Random.value < ghostProbabiliy && Ghost.GhostCountGet() < ghostMax && !AtSpawn(cell))
         {
             float temp = Random.Range(0, 3);
             if (temp >= 0 && temp < 1)
@@ -225,5 +225,24 @@ public class Maze : MonoBehaviour {
         campfire.transform.parent = cell.transform;
         campfire.transform.localPosition = new Vector3(0f, -0.04f, 0f);
         campfireCount++;
+    }
+    
+    private bool AtSpawn(MazeCell cell)
+    {
+        if (
+            (cell.transform.position.x == 0 && cell.transform.position.z == 0) ||
+            (cell.transform.position.x == 0 && cell.transform.position.z == 1) ||
+            (cell.transform.position.x == 0 && cell.transform.position.z == -1) ||
+            (cell.transform.position.x == 1 && cell.transform.position.z == 0) ||
+            (cell.transform.position.x == 1 && cell.transform.position.z == 1) ||
+            (cell.transform.position.x == 1 && cell.transform.position.z == -1) ||
+            (cell.transform.position.x == -1 && cell.transform.position.z == 0) ||
+            (cell.transform.position.x == -1 && cell.transform.position.z == 1) ||
+            (cell.transform.position.x == -1 && cell.transform.position.z == -1)
+            )
+        {
+            return true;
+        }
+        return false;
     }
 }

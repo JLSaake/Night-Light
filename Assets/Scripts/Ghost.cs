@@ -93,7 +93,7 @@ public class Ghost : MonoBehaviour {
         {
             isDead = true;
             animator.Play("Die");
-            Invoke("Die", 1.5f);
+            Invoke("Die", 1.28f);
         } else
         {
             animator.Play("TakeDamage");
