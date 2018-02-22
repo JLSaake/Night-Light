@@ -15,9 +15,16 @@ public class UIManager : MonoBehaviour {
     public GameObject preGameUI;
     public Button startButton;
 
+    public GameObject pauseUI;
+    public Image backdropPanel;
+
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+        pauseUI.gameObject.SetActive(false);
+        preGameUI.gameObject.SetActive(false);
+        inGameUI.gameObject.SetActive(false);
+        backdropPanel.gameObject.SetActive(false);
+        controlsPrefab.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -69,4 +76,31 @@ public class UIManager : MonoBehaviour {
         preGameUI.gameObject.SetActive(false);
         preGameUI.gameObject.SetActive(false);
     }
+
+    public void PauseUIOn()
+    {
+        backdropPanel.gameObject.SetActive(true);
+        pauseUI.gameObject.SetActive(true);
+    }
+
+    public void PauseUIOff()
+    {
+        backdropPanel.gameObject.SetActive(false);
+        pauseUI.gameObject.SetActive(false);
+    }
+
+    public void PauseToControls()
+    {
+        pauseUI.gameObject.SetActive(false);
+        controlsPrefab.gameObject.SetActive(true);
+        // Add return button on
+    }
+
+    public void PauseFromControls()
+    {
+        pauseUI.gameObject.SetActive(true);
+        controlsPrefab.gameObject.SetActive(false);        
+    }
+
+    // TODO: RESTART & QUIT (with respective confirmation panels)
 }

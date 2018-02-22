@@ -131,14 +131,16 @@ public class GameManager : MonoBehaviour {
         gamePaused = true;
         timer.PauseTime();
         playerInstance.setMove(false);
+        uiManager.PauseUIOn();
     }
 
-    private void UnpauseGame()
+    public void UnpauseGame()
     {
         gameActive = true;
         gamePaused = false;
         timer.ResumeTime();
         playerInstance.setMove(true);
+        uiManager.PauseUIOff();
     }
 
     public void StartMaze()
