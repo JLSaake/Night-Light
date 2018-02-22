@@ -641,21 +641,13 @@ GameObject:
   - component: {fileID: 466224812}
   - component: {fileID: 466224811}
   - component: {fileID: 466224810}
-  - component: {fileID: 466224809}
   m_Layer: 0
   m_Name: OverheadCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!81 &466224809
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 466224808}
-  m_Enabled: 1
+  m_IsActive: 1
 --- !u!124 &466224810
 Behaviour:
   m_ObjectHideFlags: 0
@@ -683,13 +675,13 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: b60940226a1bda942b6cfc913e3af14d, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -705,7 +697,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 466224808}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1040,6 +1032,7 @@ RectTransform:
   - {fileID: 1380471002}
   - {fileID: 450269403}
   - {fileID: 1463761512}
+  - {fileID: 1646398336}
   m_Father: {fileID: 1918074337}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1594,6 +1587,7 @@ MonoBehaviour:
   lightNumber: {fileID: 1380471003}
   secondsNumber: {fileID: 450269404}
   ghostsNumber: {fileID: 1463761513}
+  minimap: {fileID: 1646398337}
   preGameUI: {fileID: 336645205}
   startButton: {fileID: 1356375700}
   pauseUI: {fileID: 776869353}
@@ -2228,6 +2222,73 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27d7c34e88b0d594a851524091c5509e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1646398335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1646398336}
+  - component: {fileID: 1646398338}
+  - component: {fileID: 1646398337}
+  m_Layer: 5
+  m_Name: MiniMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1646398336
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1646398335}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 863779933}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 325, y: -150}
+  m_SizeDelta: {x: 150, y: 150}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1646398337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1646398335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 8400000, guid: b60940226a1bda942b6cfc913e3af14d, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1646398338
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1646398335}
 --- !u!1 &1656708294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,6 +2701,11 @@ Prefab:
       propertyPath: startingCamera
       value: 
       objectReference: {fileID: 1248848784}
+    - target: {fileID: 114503623582752224, guid: 2b7f7c678b52020499f41c7e6f7e8bc8,
+        type: 2}
+      propertyPath: overheadCamera
+      value: 
+      objectReference: {fileID: 466224811}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b7f7c678b52020499f41c7e6f7e8bc8, type: 2}
   m_IsPrefabParent: 0

@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour {
     public Text lightNumber;
     public Text secondsNumber;
     public Text ghostsNumber;
+    public RawImage minimap;
 
     public GameObject preGameUI;
     public Button startButton;
@@ -43,6 +44,7 @@ public class UIManager : MonoBehaviour {
         lightNumber.gameObject.SetActive(true);
         secondsNumber.gameObject.SetActive(true);
         ghostsNumber.gameObject.SetActive(true);
+        minimap.gameObject.SetActive(true);
     }
 
     public void GameUIOff()
@@ -51,6 +53,7 @@ public class UIManager : MonoBehaviour {
         lightNumber.gameObject.SetActive(false);
         secondsNumber.gameObject.SetActive(false);
         ghostsNumber.gameObject.SetActive(false);
+        minimap.gameObject.SetActive(false);
     }
 
     public void ControlsUIOn()

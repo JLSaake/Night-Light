@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public Timer timer;
     public float maxTime; // In seconds
     public Camera startingCamera;
+    public Camera overheadCamera;
 
     public float fastWalk;
     public float slowWalk;
@@ -37,6 +38,13 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (playerInstance != null)
+        {
+            overheadCamera.transform.position = new Vector3(playerInstance.transform.position.x,
+                                                            overheadCamera.transform.position.y,
+                                                            playerInstance.transform.position.z);
+        }
 
         if (Input.GetButtonDown("Pause") && gamePaused && uiManager.InPauseMain())
         {

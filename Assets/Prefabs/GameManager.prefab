@@ -62,5 +62,6 @@ MonoBehaviour:
   timer: {fileID: 0}
   maxTime: 200
   startingCamera: {fileID: 0}
+  overheadCamera: {fileID: 0}
   fastWalk: 2
   slowWalk: 0.75
