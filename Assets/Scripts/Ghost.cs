@@ -15,10 +15,13 @@ public class Ghost : MonoBehaviour {
     private bool onCooldown;
     private GameManager gameManager;
     private Camera playerMapCamera;
+    private Quaternion startRotation;
+    private Transform playerTransform;
 
 	// Use this for initialization
 	void Start () {
         onCooldown = false;
+        startRotation = this.gameObject.transform.rotation;
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager == null)
         {
@@ -29,7 +32,14 @@ public class Ghost : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        playerTransform = gameManager.GetPlayerTransform();
+        if (playerTransform != null)
+        {
+            this.gameObject.transform.rotation = startRotation;
+            this.gameObject.transform.Rotate(new Vector3(this.gameObject.transform.eulerAngles.x,
+                                                         playerTransform.eulerAngles.y + 180,
+                                                         this.gameObject.transform.eulerAngles.z));
+        }
 	}
 
     void OnTriggerStay(Collider collider)

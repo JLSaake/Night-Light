@@ -173,4 +173,13 @@ public class GameManager : MonoBehaviour {
     {
         StartCoroutine(uiManager.Blind(seconds));
     }
+
+    public Transform GetPlayerTransform()
+    {
+        if (playerInstance != null)
+        {
+            return playerInstance.transform;
+        }
+        return null;
+    }
 }
