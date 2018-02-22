@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size:
-    x: 10
-    z: 10
+    x: 20
+    z: 20
   cellPrefab: {fileID: 114259620871768610, guid: 9cab1d4c89350e34da6ca55e97bff0b6,
     type: 2}
   generationStepDelay: 0.01
@@ -68,10 +68,10 @@ MonoBehaviour:
   campfirePrefab: {fileID: 114786099840096384, guid: 945f04021cfffeb42a3383b4d71545fc,
     type: 2}
   startLight: 10
-  maxLight: 20
-  ghostProbabiliy: 0.05
+  maxLight: 30
+  ghostProbabiliy: 0.06
   torchProbability: 0.15
-  campfireProbability: 0.531
-  ghostMax: 5
-  torchMax: 200
-  campfireMax: 500
+  campfireProbability: 0.03
+  ghostMax: 20
+  torchMax: 40
+  campfireMax: 5

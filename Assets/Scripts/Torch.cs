@@ -5,6 +5,9 @@ using UnityEngine;
 public class Torch : MonoBehaviour {
 
     public float cooldown;
+    public ParticleSystem particles;
+    public Light light1;
+    public Light light2;
 
     private bool canTake;
     private bool isActive;
@@ -55,7 +58,13 @@ public class Torch : MonoBehaviour {
         Debug.Log("Taking: " + Scoring.GetLight() + " light remaining");
         isActive = false;
         canTake = false;
+        particles.gameObject.SetActive(false);
+        light1.gameObject.SetActive(false);
+        light2.gameObject.SetActive(false);
         yield return new WaitForSeconds(cooldown);
+        particles.gameObject.SetActive(true);
+        light1.gameObject.SetActive(true);
+        light2.gameObject.SetActive(true);
         isActive = true;
         if (playerIn)
         {
