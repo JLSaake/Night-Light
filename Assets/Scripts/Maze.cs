@@ -201,7 +201,7 @@ public class Maze : MonoBehaviour {
         Ghost ghost = Instantiate(gPrefab) as Ghost;
         ghost.name = "Ghost" + Ghost.GhostCountGet();
         ghost.transform.parent = cell.transform;
-        ghost.transform.localPosition = new Vector3(0f, 0.6f, 0f);
+        ghost.transform.localPosition = new Vector3(0f, 0.0f, 0f);
         Ghost.GhostCountPlus(1); // Sends message that one ghost instantiated
     }
 
