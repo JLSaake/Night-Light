@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
     private Maze mazeInstance;
     private bool outOfTime;
     private bool gameActive;
+    private Quaternion overheadCameraStart;
 
 
     private static bool gamePaused;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour {
         gamePaused = false;
         StartCoroutine(BeginGame());
         prevLight = Scoring.GetLight();
+        overheadCameraStart = overheadCamera.transform.rotation;
 	}
 	
 	// Update is called once per frame
@@ -44,6 +46,10 @@ public class GameManager : MonoBehaviour {
             overheadCamera.transform.position = new Vector3(playerInstance.transform.position.x,
                                                             overheadCamera.transform.position.y,
                                                             playerInstance.transform.position.z);
+            overheadCamera.transform.rotation = overheadCameraStart;
+            overheadCamera.transform.Rotate(new Vector3(playerInstance.transform.eulerAngles.z,
+                                                        playerInstance.transform.eulerAngles.x,
+                                                        -playerInstance.transform.eulerAngles.y));
         }
 
         if (Input.GetButtonDown("Pause") && gamePaused && uiManager.InPauseMain())
