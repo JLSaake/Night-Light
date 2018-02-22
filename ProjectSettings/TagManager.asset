@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fire
   - Projectile
+  - UIManager
   layers:
   - Default
   - TransparentFX

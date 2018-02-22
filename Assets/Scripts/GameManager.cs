@@ -169,4 +169,8 @@ public class GameManager : MonoBehaviour {
         gameActive = true;
     }
 
+    public void Blind(float seconds)
+    {
+        StartCoroutine(uiManager.Blind(seconds));
+    }
 }

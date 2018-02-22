@@ -5,27 +5,41 @@ using UnityEngine;
 public class Ghost : MonoBehaviour {
 
     public static int ghostCount;
+    public enum GhostType { RED, BLUE, GREEN };
 
+    public GhostType colorGhost;
     public int health;
     public float cooldown;
     public int lightDrain;
 
     private bool onCooldown;
+    private GameManager gameManager;
+    private Camera playerMapCamera;
 
 	// Use this for initialization
 	void Start () {
-        onCooldown = false;	
+        onCooldown = false;
+        gameManager = FindObjectOfType<GameManager>();
+        if (gameManager == null)
+        {
+            Debug.LogError("No GameManager found");
+        }
+        playerMapCamera = gameManager.overheadCamera;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
     void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.tag == "Player" && !onCooldown)
         {
+            if (colorGhost == GhostType.RED)
+            {
+                gameManager.Blind(cooldown);
+            }
             StartCoroutine(DrainLight(lightDrain));
         } else
         if (collider.gameObject.tag == "Projectile")
@@ -67,6 +81,7 @@ public class Ghost : MonoBehaviour {
             Destroy(this.gameObject);
         }
     }
+
 
 
     public static void GhostCountPlus(int add)

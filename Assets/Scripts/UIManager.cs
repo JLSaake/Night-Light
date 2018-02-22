@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour {
     public Image backdropPanel;
     public Button controlsPauseButton;
 
+    public Image blindPanel;
+
 	// Use this for initialization
 	void Awake () {
         ClearUI();
@@ -125,6 +127,15 @@ public class UIManager : MonoBehaviour {
         inGameUI.gameObject.SetActive(false);
         backdropPanel.gameObject.SetActive(false);
         controlsPrefab.gameObject.SetActive(false);
+        blindPanel.gameObject.SetActive(false);
     }
     // TODO: RESTART & QUIT (with respective confirmation panels)
+
+    public IEnumerator Blind(float seconds)
+    {
+        blindPanel.gameObject.SetActive(true);
+        Debug.Log("Blinding");
+        yield return new WaitForSeconds(seconds);
+        blindPanel.gameObject.SetActive(false);
+    }
 }
