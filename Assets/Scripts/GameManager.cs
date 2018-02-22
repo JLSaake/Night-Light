@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour {
     {
         startingCamera.gameObject.SetActive(true);
         uiManager.ControlsUIOn();
-        uiManager.LoadingGameUI();
+        uiManager.GameUIOff();
         outOfTime = false;
         gameActive = false;
         gamePaused = false;
@@ -114,8 +114,9 @@ public class GameManager : MonoBehaviour {
         // StartMaze();
     }
 
-    private void RestartGame()
+    public void RestartGame()
     {
+        uiManager.ClearUI();
         StopAllCoroutines();
         Destroy(mazeInstance.gameObject);
         if (playerInstance != null)
@@ -149,7 +150,7 @@ public class GameManager : MonoBehaviour {
         startingCamera.gameObject.SetActive(false);
         uiManager.ControlsUIOff();
         playerInstance = Instantiate(playerPrefab) as UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
-        uiManager.ChangeToGameUI();
+        uiManager.GameUIOn();
         timer.StartTime();
         gameActive = true;
     }

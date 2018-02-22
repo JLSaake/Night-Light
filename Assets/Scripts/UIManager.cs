@@ -22,13 +22,7 @@ public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        inPauseMain = false;
-        controlsPauseButton.gameObject.SetActive(false);
-        pauseUI.gameObject.SetActive(false);
-        preGameUI.gameObject.SetActive(false);
-        inGameUI.gameObject.SetActive(false);
-        backdropPanel.gameObject.SetActive(false);
-        controlsPrefab.gameObject.SetActive(false);
+        ClearUI();
 	}
 	
 	// Update is called once per frame
@@ -43,7 +37,7 @@ public class UIManager : MonoBehaviour {
         ghostsNumber.text = ghosts.ToString();
     }
 
-    public void ChangeToGameUI()
+    public void GameUIOn()
     {
         inGameUI.gameObject.SetActive(true);
         lightNumber.gameObject.SetActive(true);
@@ -51,7 +45,7 @@ public class UIManager : MonoBehaviour {
         ghostsNumber.gameObject.SetActive(true);
     }
 
-    public void LoadingGameUI()
+    public void GameUIOff()
     {
         inGameUI.gameObject.SetActive(false);
         lightNumber.gameObject.SetActive(false);
@@ -83,6 +77,7 @@ public class UIManager : MonoBehaviour {
 
     public void PauseUIOn()
     {
+        GameUIOff();
         inPauseMain = true;
         backdropPanel.gameObject.SetActive(true);
         pauseUI.gameObject.SetActive(true);
@@ -90,6 +85,7 @@ public class UIManager : MonoBehaviour {
 
     public void PauseUIOff()
     {
+        GameUIOn();
         inPauseMain = false;
         backdropPanel.gameObject.SetActive(false);
         pauseUI.gameObject.SetActive(false);
@@ -117,5 +113,15 @@ public class UIManager : MonoBehaviour {
         return inPauseMain;
     }
 
+    public void ClearUI()
+    {
+        inPauseMain = false;
+        controlsPauseButton.gameObject.SetActive(false);
+        pauseUI.gameObject.SetActive(false);
+        preGameUI.gameObject.SetActive(false);
+        inGameUI.gameObject.SetActive(false);
+        backdropPanel.gameObject.SetActive(false);
+        controlsPrefab.gameObject.SetActive(false);
+    }
     // TODO: RESTART & QUIT (with respective confirmation panels)
 }
