@@ -65,13 +65,13 @@ MonoBehaviour:
     type: 2}
   ghostPrefab1: {fileID: 114069215192382192, guid: 16d373c6147243a48bc8b2b0b5ec26c4,
     type: 2}
-  campfirePrefab: {fileID: 114217721153958790, guid: 78f2ed3d7c627994e89a74d8a020c9b8,
+  campfirePrefab: {fileID: 114786099840096384, guid: 945f04021cfffeb42a3383b4d71545fc,
     type: 2}
   startLight: 10
   maxLight: 20
   ghostProbabiliy: 0.05
   torchProbability: 0.15
-  campfireProbability: 0.08
+  campfireProbability: 0.531
   ghostMax: 5
   torchMax: 200
-  campfireMax: 5
+  campfireMax: 500

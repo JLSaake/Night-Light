@@ -210,7 +210,7 @@ public class Maze : MonoBehaviour {
         Campfire campfire = Instantiate(campfirePrefab) as Campfire;
         campfire.name = "Campfire" + campfireCount;
         campfire.transform.parent = cell.transform;
-        campfire.transform.localPosition = new Vector3(0f, 0.2f, 0f);
+        campfire.transform.localPosition = new Vector3(0f, -0.04f, 0f);
         campfireCount++;
     }
 }
