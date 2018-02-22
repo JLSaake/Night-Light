@@ -101,20 +101,17 @@ public class GameManager : MonoBehaviour {
     private IEnumerator BeginGame()
     {
         startingCamera.gameObject.SetActive(true);
+        uiManager.ControlsUIOn();
         uiManager.LoadingGameUI();
         outOfTime = false;
         gameActive = false;
         gamePaused = false;
         mazeInstance = Instantiate(mazePrefab) as Maze;
         yield return StartCoroutine(mazeInstance.Generate());
+        uiManager.PregameUIButtonOn();
 
-        // TODO: wait for button to be pressed to start gameplay after maze loading
-
-        startingCamera.gameObject.SetActive(false);
-        playerInstance = Instantiate(playerPrefab) as UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
-        uiManager.ChangeToGameUI();
-        timer.StartTime();
-        gameActive = true;
+        // TODO: remove start maze from here and hook up to button
+        // StartMaze();
     }
 
     private void RestartGame()
@@ -142,6 +139,17 @@ public class GameManager : MonoBehaviour {
         gamePaused = false;
         timer.ResumeTime();
         playerInstance.setMove(true);
+    }
+
+    public void StartMaze()
+    {
+        uiManager.PregameUIButtonOff();
+        startingCamera.gameObject.SetActive(false);
+        uiManager.ControlsUIOff();
+        playerInstance = Instantiate(playerPrefab) as UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
+        uiManager.ChangeToGameUI();
+        timer.StartTime();
+        gameActive = true;
     }
 
 }
