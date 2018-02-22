@@ -68,10 +68,10 @@ MonoBehaviour:
   campfirePrefab: {fileID: 114786099840096384, guid: 945f04021cfffeb42a3383b4d71545fc,
     type: 2}
   startLight: 10
-  maxLight: 30
-  ghostProbabiliy: 0.08
-  torchProbability: 0.1
-  campfireProbability: 0.04
-  ghostMax: 20
-  torchMax: 40
-  campfireMax: 5
+  maxLight: 20
+  ghostProbabiliy: 0.14
+  torchProbability: 0.07
+  campfireProbability: 0.01
+  ghostMax: 40
+  torchMax: 20
+  campfireMax: 3
