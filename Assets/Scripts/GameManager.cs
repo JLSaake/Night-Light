@@ -182,4 +182,15 @@ public class GameManager : MonoBehaviour {
         }
         return null;
     }
+
+    public void TeleportPlayer()
+    {
+        int mazeRadiusX = (mazeInstance.size.x / 2) - 1;
+        int mazeRadiusZ = (mazeInstance.size.z / 2) - 1;
+        playerInstance.transform.position =
+            new Vector3(
+                Mathf.RoundToInt(Random.Range((-mazeRadiusX), mazeRadiusX)),
+                playerInstance.transform.position.y,
+                Mathf.RoundToInt(Random.Range((-mazeRadiusZ), mazeRadiusZ)));
+    }
 }

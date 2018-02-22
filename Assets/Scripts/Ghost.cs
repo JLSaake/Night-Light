@@ -52,6 +52,10 @@ public class Ghost : MonoBehaviour {
             if (colorGhost == GhostType.RED)
             {
                 gameManager.Blind(cooldown);
+            } else
+            if (colorGhost == GhostType.BLUE)
+            {
+                gameManager.TeleportPlayer();
             }
             StartCoroutine(DrainLight(lightDrain));
         } else
@@ -62,7 +66,6 @@ public class Ghost : MonoBehaviour {
             {
                 DealDamage(projectile.damage);
                 Destroy(projectile.gameObject);
-                Ghost.GhostCountMinus(1);
             }
         }
     }
@@ -103,6 +106,7 @@ public class Ghost : MonoBehaviour {
     private void Die()
     {
         Destroy(this.gameObject);
+        Ghost.GhostCountMinus(1);
     }
 
 

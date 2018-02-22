@@ -74,7 +74,7 @@ MonoBehaviour:
   startLight: 15
   maxLight: 30
   ghostProbabiliy: 0.14
-  torchProbability: 0.07
+  torchProbability: 0.09
   campfireProbability: 0.01
   ghostMax: 40
   torchMax: 25
