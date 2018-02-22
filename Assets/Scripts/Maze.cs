@@ -10,7 +10,9 @@ public class Maze : MonoBehaviour {
     public MazePassage passagePrefab;
     public MazeWall wallPrefab;
     public MazeWall torchWallPrefab;
-    public Ghost ghostPrefab1;
+    public Ghost ghostPrefabRed;
+    public Ghost ghostPrefabBlue;
+    public Ghost ghostPrefabGreen;
     public Campfire campfirePrefab;
 
 
@@ -162,7 +164,18 @@ public class Maze : MonoBehaviour {
         passage.Initialize(otherCell, cell, direction.GetOpposite());
         if (Random.value < ghostProbabiliy && Ghost.GhostCountGet() < ghostMax)
         {
-            CreateGhost(ghostPrefab1, cell);
+            float temp = Random.Range(0, 3);
+            if (temp >= 0 && temp < 1)
+            {
+                CreateGhost(ghostPrefabRed, cell);
+            } else
+            if (temp >= 1 && temp <2)
+            {
+                CreateGhost(ghostPrefabBlue, cell);
+            } else
+            {
+                CreateGhost(ghostPrefabGreen, cell);
+            }
             Debug.Log("Ghosts: " + Ghost.GhostCountGet());
         } else
         if (Random.value < campfireProbability && campfireCount < campfireMax)
