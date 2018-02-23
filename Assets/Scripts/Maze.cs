@@ -178,7 +178,7 @@ public class Maze : MonoBehaviour {
             }
             Debug.Log("Ghosts: " + Ghost.GhostCountGet());
         } else
-        if (Random.value < campfireProbability && campfireCount < campfireMax)
+        if (Random.value < campfireProbability && campfireCount < campfireMax && !AtSpawn(cell))
         {
             CreateCampfire(cell);
             Debug.Log("Campfire" + campfireCount + " at " + cell.coordinates.x + ", " + cell.coordinates.z);

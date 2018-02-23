@@ -117,6 +117,8 @@ public class GameManager : MonoBehaviour {
         startingCamera.gameObject.SetActive(true);
         uiManager.ControlsUIOn();
         uiManager.GameUIOff();
+        uiManager.PregameUIOn();
+        uiManager.PregameUIButtonOff();
         outOfTime = false;
         gameActive = false;
         gamePaused = false;
@@ -160,7 +162,7 @@ public class GameManager : MonoBehaviour {
 
     public void StartMaze()
     {
-        uiManager.PregameUIButtonOff();
+        uiManager.PregameUIOff();
         startingCamera.gameObject.SetActive(false);
         uiManager.ControlsUIOff();
         playerInstance = Instantiate(playerPrefab) as UnityStandardAssets.Characters.FirstPerson.FirstPersonController;

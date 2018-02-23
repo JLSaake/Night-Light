@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour {
     public RawImage minimap;
 
     public GameObject preGameUI;
+    public Text generatingMazeText;
     public Button startButton;
 
     public GameObject pauseUI;
@@ -87,14 +88,24 @@ public class UIManager : MonoBehaviour {
     
     public void PregameUIButtonOn()
     {
-        preGameUI.gameObject.SetActive(true);
-        preGameUI.gameObject.SetActive(true);
+        startButton.gameObject.SetActive(true);
+        generatingMazeText.gameObject.SetActive(false);
     }
 
     public void PregameUIButtonOff()
     {
+        generatingMazeText.gameObject.SetActive(true);
+        startButton.gameObject.SetActive(false);
+    }
+
+    public void PregameUIOff()
+    {
         preGameUI.gameObject.SetActive(false);
-        preGameUI.gameObject.SetActive(false);
+    }
+
+    public void PregameUIOn()
+    {
+        preGameUI.gameObject.SetActive(true);
     }
 
     public void PauseUIOn()
